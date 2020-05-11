@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Qaqcs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Qa name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @qaqcs.each do |qaqc| %>
+      <tr>
+        <td><%= qaqc.qa_name %></td>
+        <td><%= link_to 'Show', qaqc %></td>
+        <td><%= link_to 'Edit', edit_qaqc_path(qaqc) %></td>
+        <td><%= link_to 'Destroy', qaqc, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Qaqc', new_qaqc_path %>

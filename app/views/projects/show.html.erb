@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @project.pr_name %>
+</p>
+
+<p>
+  <strong>Descripción:</strong>
+  <%= @project.pr_description %>
+</p>
+
+<p>
+  <strong>Inicia:</strong>
+  <%= @project.pr_start_date %>
+</p>
+
+<p>
+  <strong>Finaliza:</strong>
+  <%= @project.pr_end_date %>
+</p>
+
+<p>
+  <strong>% Admon:</strong>
+  <%= @project.pr_admon %>
+</p>
+
+<p>
+  <strong>% Incidente:</strong>
+  <%= @project.pr_incidental %>
+</p>
+
+<p>
+  <strong>% Costo Indirect:</strong>
+  <%= @project.pr_indirect_cost %>
+</p>
+
+<p>
+  <strong>% Ganancia:</strong>
+  <%= @project.pr_profit %>
+</p>
+
+<p>
+  <strong>% IVA:</strong>
+  <%= @project.pr_tax_iva %>
+</p>
+
+<%= link_to 'Edit', edit_user_project_path(params[:user_id], @project) %> |
+<%= link_to 'Back', user_projects_path %>
+

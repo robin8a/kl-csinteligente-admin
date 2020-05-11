@@ -1,0 +1,11 @@
+<%= form_tag loader_index_path do |form| %>
+	<div class="field">
+        <h3>PDT</h3>
+        <%= select_tag(:pdt_name, options_for_select(@files_item)) %>
+    </div>
+    <div class="field">
+        <h3>Costos</h3>
+        <%= select_tag(:cost_name, options_for_select(@files_item)) %>
+    </div>
+	<%= submit_tag 'Cargar proyecto' %>
+<% end %>

@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Details</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Cantidad</th>
+      <th>Horas</th>
+      <th>Colaborador</th>
+      <th>Equipo</th>
+      <th>Clima</th>
+      <th>QaQc</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @details.each do |detail| %>
+      <tr>
+        <td><%= detail.de_amount %></td>
+        <td><%= detail.de_hour %></td>
+        <td><%= detail.collaborator.nil? ? 'N/A' :  detail.collaborator.co_name %></td>
+        <td><%= detail.equipment.nil? ? 'N/A' :  detail.equipment.eq_name %></td>
+        <td><%= detail.weather.nil? ? 'N/A' :  detail.weather.we_name %></td>
+        <td><%= detail.qaqc.nil? ? 'N/A' :  detail.qaqc.qa_name %></td>
+        <td><%= link_to 'Show', user_project_activity_report_details_path(params[:user_id], params[:project_id], params[:activity_id], params[:report_id], detail.id) %></td>
+        <td><%= link_to 'Edit', edit_user_project_activity_report_detail_path(params[:user_id], params[:project_id], params[:activity_id], params[:report_id], detail.id, collaborator: true) %></td>
+        <td><%= link_to 'Destroy', user_project_activity_report_details_path(params[:user_id], params[:project_id], params[:activity_id], params[:report_id], detail.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= link_to 'Nuevo Detalle Colaborador', new_user_project_activity_report_detail_path(collaborator: true, equipment: false, weather: false, qaqc: false) %>
+<br>
+<%= link_to 'Nuevo Detalle Equipo', new_user_project_activity_report_detail_path(collaborator: false, equipment: true, weather: false, qaqc: false) %>
+<br>
+<%= link_to 'Nuevo Detalle Clima', new_user_project_activity_report_detail_path(collaborator: false, equipment: false, weather: true, qaqc: false) %>
+<br>
+<%= link_to 'Nuevo Detalle QaQc', new_user_project_activity_report_detail_path(collaborator: false, equipment: false, weather: false, qaqc: true) %>
+<br>

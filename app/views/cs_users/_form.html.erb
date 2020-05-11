@@ -1,0 +1,46 @@
+<%= form_with(model: cs_user, local: true) do |form| %>
+  <% if cs_user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(cs_user.errors.count, "error") %> prohibited this cs_user from being saved:</h2>
+
+      <ul>
+      <% cs_user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :nickname %>
+    <%= form.text_field :nickname %>
+  </div>
+
+  <div class="field">
+    <%= form.label(:rol, "Role") %>
+    <%= form.select(:rol, {"Administrador": "0", "Cliente": "1", "Contratista": "2", "Interventor": "3"}) %>
+  </div>
+
+  <table class="w3-table">
+      <tr>
+        <th>Empresa</th>
+        <th>Pertenece</th>
+      </tr>
+      <%= form.collection_check_boxes :enterprise_ids, Enterprise.all, :id, :en_name do |b| %>
+        <div class="collection-check-box">
+          
+            <tr>
+              <td><%= b.label %></td>
+              <td><%= b.check_box %></td>
+            </tr>
+          
+        </div>
+      <% end %>
+    </table>
+
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

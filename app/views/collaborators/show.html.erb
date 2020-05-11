@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Co name:</strong>
+  <%= @collaborator.co_name %>
+</p>
+
+<p>
+  <strong>Co role:</strong>
+  <%= @collaborator.co_role %>
+</p>
+
+<%= link_to 'Edit', edit_collaborator_path(@collaborator) %> |
+<%= link_to 'Back', collaborators_path %>

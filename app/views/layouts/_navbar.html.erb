@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">CSInteligente</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <% if signed_in? %>
+      <div class="navbar-nav">
+        <a><%= link_to 'Proyectos', user_projects_path(current_user.id) %></a>
+      </div>
+    <% end %>
+  </div>
+  <div>
+      <% if signed_in? %>
+        <%= link_to "Salir", destroy_user_session_path, method: :delete %>
+      <% else %>
+        <%= link_to "Ingresar", new_user_session_path %>
+      <% end %>
+      <% if admin? %>
+        <%= link_to "Registrarse", new_user_registration_path %>
+      <% end %>  
+    </div>
+</nav>

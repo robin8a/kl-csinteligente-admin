@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Activities</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>WBS</th>
+      <th>Nombre</th>
+      <th>Inicia</th>
+      <th>Finaliza</th>
+      <th>Padre</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @activities.each do |activity| %>
+      <tr>
+        <td><%= activity.id %></td>
+        <td><%= activity.ac_numbered_list %></td>
+        <td><%= activity.ac_name %></td>
+        <td><%= activity.ac_start_date %></td>
+        <td><%= activity.ac_end_date %></td>
+        <td><%= if activity.activity.nil? then "Root" else activity.activity.name_with_numbered_list end %></td>
+        <td><%= link_to 'Show', user_project_activity_path(params[:user_id], params[:project_id], activity.id) %></td>
+        <td><%= link_to 'Edit', edit_user_project_activity_path(params[:user_id], params[:project_id], activity.id) %></td>
+        <td><%= link_to 'Destroy', user_project_activity_path(params[:user_id], params[:project_id], activity.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= if activity.ac_is_cost then link_to 'Reportar', new_user_project_activity_report_path(params[:user_id], params[:project_id], activity.id) else false end  %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= link_to 'New Activity', new_user_project_activity_path %>

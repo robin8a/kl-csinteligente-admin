@@ -1,0 +1,119 @@
+<%= form_for [user, project] do |form| %>
+  <% if project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+      <ul>
+      <% project.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :pr_name %>
+    <%= form.text_area :pr_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pr_description %>
+    <%= form.text_area :pr_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pr_start_date %>
+    <%= form.date_select :pr_start_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pr_end_date %>
+    <%= form.date_select :pr_end_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pr_admon %>
+    <%= form.text_field :pr_admon %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pr_incidental %>
+    <%= form.text_field :pr_incidental %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pr_indirect_cost %>
+    <%= form.text_field :pr_indirect_cost %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pr_profit %>
+    <%= form.text_field :pr_profit %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pr_tax_iva %>
+    <%= form.text_field :pr_tax_iva %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pr_hours %>
+    <%= form.text_field :pr_hours %>
+  </div>
+
+  <div class="field">
+    <table class="w3-table">
+      <tr>
+        <th>Nombre/Rol</th>
+        <th>Gestiona</th>
+      </tr>
+      <%= form.collection_check_boxes :user_ids, User.all, :id, :name_and_rol do |b| %>
+        <div class="collection-check-box">
+            <tr>
+              <td><%= b.label %></td>
+              <td><%= b.check_box %></td>
+            </tr>
+        </div>
+      <% end %>
+    </table>
+  </div>
+
+  <div class="field">
+    <table class="w3-table">
+      <tr>
+        <th>Nombre</th>
+        <th>Soporta</th>
+      </tr>
+      <%= form.collection_check_boxes :collaborator_ids, Collaborator.all, :id, :co_name do |b| %>
+        <div class="collection-check-box">
+            <tr>
+              <td><%= b.label %></td>
+              <td><%= b.check_box %></td>
+            </tr>
+        </div>
+      <% end %>
+    </table>
+  </div>
+
+
+  <div class="field">
+    <table class="w3-table">
+      <tr>
+        <th>Equipo</th>
+        <th>Construye</th>
+      </tr>
+      <%= form.collection_check_boxes :equipment_ids, Equipment.all, :id, :eq_name do |b| %>
+        <div class="collection-check-box">
+            <tr>
+              <td><%= b.label %></td>
+              <td><%= b.check_box %></td>
+            </tr>
+        </div>
+      <% end %>
+    </table>
+  </div>
+  
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

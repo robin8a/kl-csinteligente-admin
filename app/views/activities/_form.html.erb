@@ -1,0 +1,65 @@
+<%= form_for [@user, project, activity] do |form| %>
+  <% if activity.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(activity.errors.count, "error") %> prohibited this activity from being saved:</h2>
+
+      <ul>
+      <% activity.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :pr_id, "Proyecto" %>
+    <p><%= @project.pr_name %><p/>
+  <div>
+
+  <div class="field">
+    <%= form.label :activity_id, "Actividad Padre" %>
+    <%= form.collection_select(:activity_id, Project.find(params[:project_id]).activities, :id, :name_with_numbered_list) %>
+  <div>
+
+  <div class="field">
+    <%= form.label :ac_numbered_list %>
+    <%= form.text_area :ac_numbered_list %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ac_name %>
+    <%= form.text_area :ac_name %>
+  </div>
+  <div class="field">
+    <%= form.label :ac_start_date %>
+    <%= form.date_select :ac_start_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ac_end_date %>
+    <%= form.date_select :ac_end_date %>
+  </div>
+
+  <%= form.fields_for :baselines do |baselines_form| %>
+    <%= baselines_form.hidden_field :project_id, { value: project.id }%>
+    <div class="field">
+      <%= baselines_form.label :measure_id, "Medida" %>
+      <%= baselines_form.collection_select(:measure_id, Measure.all, :id, :name_with_unit) %>
+    <div>
+
+    <div class="field">
+      <%= baselines_form.label :ba_amount, "Cantidad" %>
+      <%= baselines_form.text_area :ba_amount %>
+    <div>
+
+    <div class="field">
+      <%= baselines_form.label :ba_price, "Precio" %>
+      <%= baselines_form.text_area :ba_price %>
+    <div>
+
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

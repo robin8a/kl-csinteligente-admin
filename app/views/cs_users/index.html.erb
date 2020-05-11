@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Cs Users</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nickname</th>
+      <th>Rol</th>
+      <th colspan="5"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cs_users.each do |cs_user| %>
+      <tr>
+        <td><%= cs_user.id %></td>
+        <td><%= cs_user.nickname %></td>
+        <td><%= cs_user.rol %></td>
+        <td><%= link_to 'Show', cs_user %></td>
+        <td><%= link_to 'Edit', edit_cs_user_path(cs_user) %></td>
+        <td><%= link_to 'Destroy', cs_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Empresas', cs_user_enterprises_path(cs_user.id) %></td>
+        <td><%= link_to 'Proyectos', cs_user_projects_path(cs_user.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Cs User', new_cs_user_path %>

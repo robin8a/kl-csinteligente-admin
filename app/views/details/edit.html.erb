@@ -1,0 +1,6 @@
+<h1>Editar Detalle</h1>
+
+<%= render 'form', detail: @detail, report: @report, activity: @activity, project: @project, user: @user %>
+
+<%= link_to 'Show', user_project_activity_report_detail_path(params[:user_id], params[:project_id], @activity) %> |
+<%= link_to 'Back', user_project_activity_report_details_path %>

@@ -1,0 +1,49 @@
+<%= form_for [user, project, activity, report] do |form| %>
+  <% if report.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(report.errors.count, "error") %> prohibited this report from being saved:</h2>
+
+      <ul>
+      <% report.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :activity_id, "Actividad" %>
+    <%= form.collection_select(:activity_id, project.activities, :id, :name_with_numbered_list, {:selected => @activity.id}) %>
+  <div>
+
+  <div class="field">
+    <%= form.label :re_date, "Fecha" %>
+    <%= form.date_select :re_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :re_amount, "Avance" %>
+    <%= form.text_field :re_amount %>
+  </div>
+
+  <div class="field">
+    <%= form.label :contractor_id, "Contratista" %>
+    <%= form.collection_select(:contractor_id, project.users.where(us_rol: 2), :id, :name_and_rol) %>
+  <div>
+
+  <div class="field">
+    <%= form.label :controller_id, "Interventor" %>
+    <%= form.collection_select(:controller_id, project.users.where(us_rol: 3), :id, :name_and_rol) %>
+  <div>
+
+  <div class="field">
+    <%= form.label(:re_status, "Estado del reporte") %>
+    <%= form.select(:re_status, {"Guardado": "1", "Por aprobar": "2", "Aprobado": "3"}) %>
+  </div>
+
+  
+
+  <div class="actions" >
+    <%= form.submit %>
+  </div>
+<% end %>

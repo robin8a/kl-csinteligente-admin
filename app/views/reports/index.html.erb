@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Reports</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Fecha</th>
+      <th>Cantidad</th>
+      <th>Actividad</th>
+      <th>Contratisa</th>
+      <th>Interventor</th>
+      <th>Estado</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reports.each do |report| %>
+      <tr>
+        <td><%= report.re_date %></td>
+        <td><%= report.re_amount %></td>
+        <td><%= report.activity.ac_name %></td>
+        <td><%= report.contractor.nil? ? 'No asignado' :  report.contractor.us_name %></td>
+        <td><%= report.controller.nil? ? 'No asignado' :  report.controller.us_name %></td>
+        <td><%= report.re_status %></td>
+        <td><%= link_to 'Show', user_project_activity_report_path(params[:user_id], params[:project_id], params[:activity_id], report.id) %></td>
+        <td><%= link_to 'Edit', edit_user_project_activity_report_path(params[:user_id], params[:project_id], params[:activity_id], report.id) %></td>
+        <td><%= link_to 'Destroy', user_project_activity_report_path(params[:user_id], params[:project_id], params[:activity_id], report.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Detalles', user_project_activity_report_details_path(params[:user_id], params[:project_id], params[:activity_id], report.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Report', new_user_project_activity_report_path %>

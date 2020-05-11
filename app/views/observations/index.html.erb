@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Observations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Ob name</th>
+      <th>Ob type</th>
+      <th>Ob desc</th>
+      <th>Ob text</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @observations.each do |observation| %>
+      <tr>
+        <td><%= observation.ob_name %></td>
+        <td><%= observation.ob_type %></td>
+        <td><%= observation.ob_desc %></td>
+        <td><%= observation.ob_text %></td>
+        <td><%= link_to 'Show', observation %></td>
+        <td><%= link_to 'Edit', edit_observation_path(observation) %></td>
+        <td><%= link_to 'Destroy', observation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Observation', new_observation_path %>

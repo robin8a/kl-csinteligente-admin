@@ -1,0 +1,6 @@
+<h1>Editing Enterprise</h1>
+
+<%= render 'form', cs_user: @cs_user, enterprise: @enterprise %>
+
+<%= link_to 'Show', cs_user_enterprise_path(params[:cs_user_id], @enterprise.id) %> |
+<%= link_to 'Back', cs_user_enterprises_path %>

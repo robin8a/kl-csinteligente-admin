@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>WBS</strong>
+  <%= @activity.ac_numbered_list %>
+</p>
+
+<p>
+  <strong>Nombre</strong>
+  <%= @activity.ac_name %>
+</p>
+
+<p>
+  <strong>Inicia</strong>
+  <%= @activity.ac_start_date %>
+</p>
+
+<p>
+  <strong>Finaliza</strong>
+  <%= @activity.ac_end_date %>
+</p>
+
+<p>
+  <strong>Padre:</strong>
+  <%= if @activity.activity.nil? then "Root" else @activity.activity.name_with_numbered_list end %>
+</p>
+<%= link_to 'Edit', edit_user_project_activity_path(params[:user_id], params[:project_id], params[:id]) %> |
+<%= link_to 'Back', user_project_activities_path %>

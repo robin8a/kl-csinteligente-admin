@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nickname:</strong>
+  <%= @cs_user.nickname %>
+</p>
+
+<%= link_to 'Edit', edit_cs_user_path(@cs_user) %> |
+<%= link_to 'Back', cs_users_path %>

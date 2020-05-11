@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Re date:</strong>
+  <%= @report.re_date %>
+</p>
+
+<p>
+  <strong>Re amount:</strong>
+  <%= @report.re_amount %>
+</p>
+
+<p>
+  <strong>Activity:</strong>
+  <%= @report.activity.ac_name %>
+</p>
+
+<p>
+  <strong>Contractor:</strong>
+  <%= @report.contractor.nil? ? 'No asignado' :  @report.contractor.us_name %>
+</p>
+
+<p>
+  <strong>Controller:</strong>
+  <%= @report.controller.nil? ? 'No asignado' :  @report.contractor.us_name %>
+</p>
+
+<%= link_to 'Edit', edit_user_project_activity_report_path(params[:user_id], params[:project_id], params[:activity_id], @report) %> |
+<%= link_to 'Back', user_project_activity_reports_path %>

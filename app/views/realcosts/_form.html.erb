@@ -1,0 +1,32 @@
+<%= form_with(model: realcost, local: true) do |form| %>
+  <% if realcost.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(realcost.errors.count, "error") %> prohibited this realcost from being saved:</h2>
+
+      <ul>
+      <% realcost.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :re_date %>
+    <%= form.date_select :re_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :re_value %>
+    <%= form.text_field :re_value %>
+  </div>
+
+  <div class="field">
+    <%= form.label :project_id %>
+    <%= form.text_field :project_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

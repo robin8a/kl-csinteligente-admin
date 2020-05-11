@@ -1,0 +1,2 @@
+module QaqcsHelper
+end

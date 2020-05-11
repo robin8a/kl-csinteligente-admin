@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Re date:</strong>
+  <%= @realcost.re_date %>
+</p>
+
+<p>
+  <strong>Re value:</strong>
+  <%= @realcost.re_value %>
+</p>
+
+<p>
+  <strong>Project:</strong>
+  <%= @realcost.project %>
+</p>
+
+<%= link_to 'Edit', edit_realcost_path(@realcost) %> |
+<%= link_to 'Back', realcosts_path %>

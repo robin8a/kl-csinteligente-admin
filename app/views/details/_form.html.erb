@@ -1,0 +1,115 @@
+<%= form_for [@user, project, activity, report, detail] do |form| %>
+  <%= form.hidden_field :report_id, { value: report.id }%>
+  <% if detail.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(detail.errors.count, "error") %> prohibited this detail from being saved:</h2>
+
+      <ul>
+      <% detail.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :de_amount %>
+    <%= form.text_field :de_amount %>
+  </div>
+
+  <div class="field">
+    <%= form.label :de_hour %>
+    <%= form.number_field :de_hour %>
+  </div>
+
+  <% if params[:collaborator] == "true" %>
+    <div class="field">
+      <table class="w3-table">
+        <tr>
+          <th>Nombre</th>
+          <th>Soporta</th>
+        </tr>
+        <%= form.collection_radio_buttons :collaborator_id, project.collaborators, :id, :co_name do |b| %>
+          <div class="collection-check-box">
+              <tr>
+                <td><%= b.label %></td>
+                <td><%= b.radio_button %></td>
+              </tr>
+          </div>
+        <% end %>
+      </table>
+    </div>
+  <% end %>
+
+  <% if params[:equipment] == "true" %>
+    <div class="field">
+      <table class="w3-table">
+        <tr>
+          <th>Equipo</th>
+          <th>Construye</th>
+        </tr>
+        <%= form.collection_radio_buttons :equipment_id, project.equipment.all, :id, :eq_name do |b| %>
+          <div class="collection-check-box">
+              <tr>
+                <td><%= b.label %></td>
+                <td><%= b.radio_button %></td>
+              </tr>
+          </div>
+        <% end %>
+      </table>
+    </div>
+  <% end %>
+  
+  <% if params[:weather] == "true" %>
+    <div class="field">
+      <table class="w3-table">
+        <tr>
+          <th>Clima</th>
+          <th>Jornada</th>
+        </tr>
+        <%= form.collection_radio_buttons :weather_id, Weather.all, :id, :we_name do |b| %>
+          <div class="collection-check-box">
+              <tr>
+                <td><%= b.label %></td>
+                <td><%= b.radio_button %></td>
+              </tr>
+          </div>
+        <% end %>
+      </table>
+    </div>
+  <% end %>
+
+  <% if params[:qaqc] == "true" %>
+    <div class="field">
+      <table class="w3-table">
+        <tr>
+          <th>QA/QC</th>
+          <th>Jornada</th>
+        </tr>
+        <%= form.collection_radio_buttons :qaqc_id, Qaqc.all, :id, :qa_name do |b| %>
+          <div class="collection-check-box">
+              <tr>
+                <td><%= b.label %></td>
+                <td><%= b.radio_button %></td>
+              </tr>
+          </div>
+        <% end %>
+      </table>
+    </div>
+  <% end %>
+
+  <%= fields_for :detobs do |detobs_form| %>
+    <%= detobs_form.hidden_field :detail_id, { value: @detail.id }%>
+    
+    <div class="field">
+      <%= detobs_form.label :observation_id, "Observación" %>
+      <%= detobs_form.collection_select(:observation_id, Observation.all, :id, :ob_name) %>
+    <div>
+
+  <% end %>
+
+  
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

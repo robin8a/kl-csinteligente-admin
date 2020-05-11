@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Enterprises</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>En name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @enterprises.each do |enterprise| %>
+      <tr>
+        <td><%= enterprise.en_name %></td>
+        <td><%= link_to 'Show', cs_user_enterprise_path(params[:cs_user_id],enterprise.id) %></td>
+        <td><%= link_to 'Edit', edit_cs_user_enterprise_path(params[:cs_user_id],enterprise.id) %></td>
+        <td><%= link_to 'Destroy', cs_user_enterprise_path(params[:cs_user_id],enterprise.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Enterprise', new_cs_user_enterprise_path %>

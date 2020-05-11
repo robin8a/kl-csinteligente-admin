@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Projects</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th>Inicia</th>
+      <th>Finaliza</th>
+      <th>% Admon</th>
+      <th>% Incidente</th>
+      <th>% Costos Indirecto</th>
+      <th>% Fit</th>
+      <th>% IVA</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @projects.each do |project| %>
+      <tr>
+        <td><%= project.id %></td>
+        <td><%= project.pr_name %></td>
+        <td><%= project.pr_description %></td>
+        <td><%= project.pr_start_date %></td>
+        <td><%= project.pr_end_date %></td>
+        <td><%= project.pr_admon %></td>
+        <td><%= project.pr_incidental %></td>
+        <td><%= project.pr_indirect_cost %></td>
+        <td><%= project.pr_profit %></td>
+        <td><%= project.pr_tax_iva %></td>
+        <td><%= link_to 'Show', user_project_url(params[:user_id], project.id) %></td>
+        <td><%= link_to 'Edit', edit_user_project_url(params[:user_id], project.id) %></td>
+        <td><%= link_to 'Destroy', user_project_url(params[:user_id], project.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Actividades', user_project_activities_path(params[:user_id], project.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Project', new_user_project_path %>

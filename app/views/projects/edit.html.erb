@@ -1,0 +1,6 @@
+<h1>Editar Proyecto</h1>
+
+<%= render 'form', project: @project, user: @user %>
+
+<%= link_to 'Show', user_project_url(params[:user_id], @project.id) %> |
+<%= link_to 'Back', user_projects_url %>
