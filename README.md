@@ -1,24 +1,23 @@
-# README
+# Bienvenido a la documentación de instalación de iTiquet
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Requerimientos del sistema:
 
-Things you may want to cover:
+* Ruby 2.4.0
 
-* Ruby version
+* Rails 5.0.1
 
-* System dependencies
+* Pasos para instalar el software en su maquina
 
-* Configuration
+Una vez haya clonado el proyecto:
 
-* Database creation
+Dirijase a la carpeta: cd  ../itiquet/
 
-* Database initialization
+Realize la instalación del bundle:
 
-* How to run the test suite
+bundle install
 
-* Services (job queues, cache servers, search engines, etc.)
+* Instalación de la base de datos 
 
-* Deployment instructions
+rails db:create
 
-* ...
+rails db:migrate
