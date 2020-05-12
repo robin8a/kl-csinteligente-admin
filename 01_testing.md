@@ -35,8 +35,11 @@ rails db:migrate
 
 
 # Heroku
+## Publish or update
 ```sh
 git push heroku master
+heroku run rake db:migrate
+heroku run rake db:seed
 ```
 
 - [Heroku Generated](https://arcane-meadow-49804.herokuapp.com/)
