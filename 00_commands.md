@@ -15,3 +15,12 @@ git push -u origin master
 
 
 ```
+
+
+# Heroku
+- [Running Rake Commands](https://devcenter.heroku.com/articles/rake)
+- 
+```sh
+heroku update
+
+```
