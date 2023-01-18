@@ -83,8 +83,13 @@ GIT
       thor (~> 1.0)
 
 GEM
-  remote: https://rubygems.org/
   remote: https://rails-assets.org/
+  specs:
+    rails-assets-bootstrap (4.3.1)
+    rails-assets-jquery (3.4.1)
+
+GEM
+  remote: https://rubygems.org/
   specs:
     autoprefixer-rails (9.7.6)
       execjs
@@ -1057,11 +1062,9 @@ GEM
     orm_adapter (0.5.0)
     pg (1.2.3)
     puma (3.12.4)
-    rack (2.2.2)
+    rack (2.2.6.2)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
-    rails-assets-bootstrap (4.3.1)
-    rails-assets-jquery (3.4.1)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
